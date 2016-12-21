@@ -25,5 +25,5 @@ CarrierWave.configure do |config|
 
 	config.fog_directory    = ''
 	#config.s3_access_policy = :public_read                          # Generate http:// urls. Defaults to :authenticated_read (https://)
-	config.fog_host         = ''
+	#config.fog_host         = ''
 end
