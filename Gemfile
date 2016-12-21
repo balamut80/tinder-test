@@ -53,3 +53,5 @@ gem 'carrierwave'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+
+gem 'fog'
