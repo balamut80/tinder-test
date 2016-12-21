@@ -24,6 +24,6 @@ CarrierWave.configure do |config|
 	config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
 
 	config.fog_directory    = ''
-	config.s3_access_policy = :public_read                          # Generate http:// urls. Defaults to :authenticated_read (https://)
+	#config.s3_access_policy = :public_read                          # Generate http:// urls. Defaults to :authenticated_read (https://)
 	config.fog_host         = ''
 end
