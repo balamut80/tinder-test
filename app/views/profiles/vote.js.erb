@@ -1,0 +1,12 @@
+switch (<%= response.status %>) {
+  case 200:
+    $('.photo-container').fadeOut(300, function(){
+      $('#media_id').val('<%= @photo.id %>');
+      $(this).attr('src','<%= @photo.file_name.url %>').bind('onreadystatechange load', function(){
+        if (this.complete) $(this).fadeIn(300);
+      });
+    });
+    break;
+  case 400:
+    break;
+}
