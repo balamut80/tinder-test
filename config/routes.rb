@@ -10,4 +10,5 @@ Rails.application.routes.draw do
 	resources :profiles, only: [:index]
 	post 'vote', to: 'profiles#vote'
 
+	resources :votes, only: [:index]
 end

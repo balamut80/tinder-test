@@ -50,6 +50,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'dropzonejs-rails'
 gem 'carrierwave'
+gem 'mini_magick'
 
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
