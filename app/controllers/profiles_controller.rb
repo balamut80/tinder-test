@@ -18,6 +18,11 @@ class ProfilesController < ApplicationController
 					like: LikesPhoto::VOTE_STATUS[params[:commit]]
 			)
 
+			Chat.create(
+					sender_id: current_user.id,
+					recipient_id:	media.user.id,
+			)
+
 			@photo = get_photo
 			render status: 200
 		rescue

@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :medias
+	has_many :chats, :foreign_key => :sender_id
 
+	has_many :messages
 end

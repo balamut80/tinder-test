@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require dropzone
 //= require bootstrap
+//= require private_pub
 //= require_tree .

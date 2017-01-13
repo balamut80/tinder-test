@@ -56,3 +56,5 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 
 gem 'fog'
+gem 'private_pub'
+gem 'thin'

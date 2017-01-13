@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 	post 'vote', to: 'profiles#vote'
 
 	resources :votes, only: [:index]
+	resources :chats, only: [:index, :show]
+	resources :messages, only: [:create]
+
 end
