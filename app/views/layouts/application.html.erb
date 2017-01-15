@@ -10,15 +10,23 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/profiles"><b>Find a pair</b></a>
-          <a class="navbar-brand" href="/chats"><b>Chats</b></a>
-          <a class="navbar-brand" href="/votes"><b>Votes history</b></a>
+    <% if user_signed_in? %>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li><a class="navbar-brand" href="/"><b>My photos</b></a></li>
+            <li><a class="navbar-brand" href="/profiles"><b>Find a pair</b></a></li>
+            <li><a class="navbar-brand" href="/chats"><b>Chats</b></a></li>
+            <li><a class="navbar-brand" href="/votes"><b>Votes history</b></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, :class =>"navbar-brand right") %></li>
+
+
+          </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -3,12 +3,12 @@ class ProfilesController < ApplicationController
 	respond_to :html, :js
 
 	def index
-		#@photo = get_photo
-		#ViewedPhoto.create(user_id: current_user.id, media_id: @photo.id, showed_at: DateTime.now) if @photo
-		@photo = Media.order("RANDOM()").first
+		@photo = get_photo
 	end
 
 	def vote
+		ViewedPhoto.create(user_id: current_user.id, media_id: params[:media_id], showed_at: DateTime.now)
+
 		begin
 			media = Media.find(params[:media_id])
 			LikesPhoto.create(
@@ -18,13 +18,15 @@ class ProfilesController < ApplicationController
 					like: LikesPhoto::VOTE_STATUS[params[:commit]]
 			)
 
-			Chat.create(
-					sender_id: current_user.id,
-					recipient_id:	media.user.id,
-			)
-
-			@photo = get_photo
-			render status: 200
+			@chat_id = 0
+			chat = Chat.between(current_user.id, media.user.id).first
+			if chat
+				@chat_id = chat.id
+				render status: 302
+			else
+				@photo_next = get_photo
+				render status: 200
+			end
 		rescue
 			render status: 400
 		end
@@ -33,10 +35,10 @@ class ProfilesController < ApplicationController
 	private
 
 	def get_photo
-		#viewed_photos = ViewedPhoto.where(user_id: current_user.id).where("showed_at <= ?", 6.hours.ago).pluck(:media_id)
-		#Media.where.not(user_id: current_user.id).where('id NOT IN (?)', viewed_photos).order("RANDOM()").first
-		Media.order("RANDOM()").first
+		viewed_photos = ViewedPhoto.where(user_id: current_user.id).where("showed_at >= ?", 6.hours.ago).pluck(:media_id)
+		photo = Media.where.not(user_id: current_user.id)
+		photo = photo.where('id NOT IN (?)', viewed_photos) unless viewed_photos.blank?
+		photo.order("RANDOM()").first
 	end
-
 
 end

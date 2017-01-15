@@ -1,11 +1,21 @@
 switch (<%= response.status %>) {
   case 200:
     $('.photo-container').fadeOut(300, function(){
-      $('#media_id').val('<%= @photo.id %>');
-      $(this).attr('src','<%= @photo.file_name.url %>').bind('onreadystatechange load', function(){
-        if (this.complete) $(this).fadeIn(300);
-      });
+      <% if @photo_next %>
+        $('.photo-container').show();
+        $('#media_id').val('<%= @photo_next.id %>');
+        $(this).attr('src','<%= @photo_next.file_name.url %>').bind('onreadystatechange load', function(){
+          if (this.complete) $(this).fadeIn(300);
+        });
+
+      <% else %>
+      $('.photo-container').html('<h5 id="no-media">No photos found</h5>');
+        $('.photo-container').show();
+      <% end %>
     });
+    break;
+  case 302:
+    window.location.replace("<%= chat_path(@chat_id) %>");
     break;
   case 400:
     break;

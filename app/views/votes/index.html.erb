@@ -5,19 +5,23 @@
         <div class="row">
           <div class="col-lg-12">
             <table class="table table-condensed">
-              <thead>
+              <% if @user_chats.blank? %>
+                No votes found
+              <% else %>
+                <thead>
                 <tr>
                   <th>Photo</th>
                   <th>Email</th>
                   <th>Date</th>
                 </tr>
-              </thead>
-              <% @votes.each do |vote| %>
-                <tr class="<%= vote.like? ? 'success' : 'danger' %>">
-                  <td><%= image_tag vote.media.file_name.preview.url  %></td>
-                  <td><%= vote.media_user.email %></td>
-                  <td><%= vote.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-                </tr>
+                </thead>
+                <% @votes.each do |vote| %>
+                  <tr class="<%= vote.like? ? 'success' : 'danger' %>">
+                    <td><%= image_tag vote.media.file_name.preview.url  %></td>
+                    <td><%= vote.media_user.email %></td>
+                    <td><%= vote.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                  </tr>
+                <% end %>
               <% end %>
             </table>
           </div>

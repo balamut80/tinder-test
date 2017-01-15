@@ -5,15 +5,14 @@
         <div class="row">
           <div class="col-lg-12">
             <table class="table table-condensed">
-              <thead>
-                <tr>
-                  <th>Chat!!</th>
-                </tr>
-              </thead>
-              <% @user_chats.each do |chat| %>
-                <tr>
-                  <td><%= link_to chat.recipient.email, chat_path(chat) %></td>
-                </tr>
+              <% if @user_chats.blank? %>
+                No chats found
+              <% else %>
+                <% @user_chats.each do |chat| %>
+                  <tr>
+                    <td><%= link_to chat.recipient.email, chat_path(chat) %></td>
+                  </tr>
+                <% end %>
               <% end %>
             </table>
           </div>

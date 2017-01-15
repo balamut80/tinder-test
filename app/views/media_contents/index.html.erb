@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row" style="margin-top: 50px;">
     <div class="col-lg-4 col-lg-offset-1">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Upload New Photo</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Upload new photos</button>
     </div>
   </div>
   <div class="row" style="margin-top: 25px;">
     <div class="col-lg-10 col-lg-offset-1">
       <div class="well">
-        <h4><b>Media</b></h4><hr>
+        <h4><b>All uploaded photos</b></h4><hr>
         <div class="row">
           <div class="col-lg-10">
             <%= form_tag '/delete_media', method: :delete do %>
@@ -16,7 +16,7 @@
               <div class="row">
                 <div id="media-contents" class="col-lg-12">
                   <% if @media_contents.empty? %>
-                    <h5 id="no-media">No Photos Found</h5>
+                    <h5 id="no-media">No photos found</h5>
                   <% else %>
                     <% @media_contents.each do |media| %>
                       <div class="col-lg-4">
@@ -36,7 +36,7 @@
             <% end %>
           </div>
           <div class="col-lg-1">
-            <%= link_to 'Delete All', delete_all_path, method: :delete, id: 'delete-all', class: 'btn btn-danger', disabled: @media_contents.empty? %>
+            <%= link_to 'Delete all', delete_all_path, method: :delete, id: 'delete-all', class: 'btn btn-danger', disabled: @media_contents.empty? %>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Upload New Photo</h4>
+        <h4 class="modal-title" id="myModalLabel">Upload new photo</h4>
       </div>
       <div class="modal-body">
         <%= form_tag '/media_contents', method: :post, class: 'dropzone form', id: 'media-dropzone' do %>
