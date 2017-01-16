@@ -6,6 +6,10 @@ class Chat < ApplicationRecord
 
 	validates_uniqueness_of :sender_id, :scope => :recipient_id
 
+	scope :involving, -> (user) do
+		where("chats.sender_id =? OR chats.recipient_id =?", user.id, user.id)
+	end
+
 	scope :between, -> (sender_id,recipient_id) do
 		where("(chats.sender_id = ? AND chats.recipient_id = ?) OR (chats.sender_id = ? AND chats.recipient_id = ?)", sender_id, recipient_id, recipient_id, sender_id)
 	end

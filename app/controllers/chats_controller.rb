@@ -3,7 +3,7 @@ class ChatsController < ApplicationController
 	before_action :chat_allowed, only: [:show]
 
 	def index
-		@user_chats = Chat.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+		@user_chats = Chat.involving(current_user)
 	end
 
 	def show
@@ -13,6 +13,6 @@ class ChatsController < ApplicationController
 	private
 
 	def chat_allowed
-		redirect_to root_path unless Chat.where(id: params[:id]).where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+		redirect_to root_path unless Chat.involving(current_user).where(id: params[:id])
 	end
 end

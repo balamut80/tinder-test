@@ -2,15 +2,23 @@
   <div class="row" style="margin-top: 25px;">
     <div class="col-lg-10 col-lg-offset-1">
       <div class="well" >
+        <h4><b>All created chats</b></h4>
         <div class="row">
           <div class="col-lg-12">
-            <table class="table table-condensed">
+            <table class="table">
               <% if @user_chats.blank? %>
                 No chats found
               <% else %>
+                <thead>
+                <tr>
+                  <th>Email</th>
+                  <th>Unread messages</th>
+                </tr>
+                </thead>
                 <% @user_chats.each do |chat| %>
                   <tr>
-                    <td><%= link_to chat.recipient.email, chat_path(chat) %></td>
+                    <td><%= chat_opponent(chat) %></td>
+                    <td>0</td>
                   </tr>
                 <% end %>
               <% end %>
