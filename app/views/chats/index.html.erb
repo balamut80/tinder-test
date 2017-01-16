@@ -12,13 +12,11 @@
                 <thead>
                 <tr>
                   <th>Email</th>
-                  <th>Unread messages</th>
                 </tr>
                 </thead>
                 <% @user_chats.each do |chat| %>
                   <tr>
                     <td><%= chat_opponent(chat) %></td>
-                    <td>0</td>
                   </tr>
                 <% end %>
               <% end %>
