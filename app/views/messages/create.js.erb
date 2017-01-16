@@ -1,4 +1,4 @@
-<% publish_to "/messages/new" do %>
+<% publish_to "/chat/#{@message.chat_id}/messages" do %>
   var row = '<tr>'+
     "<td><i><%= @message.user.email %></i>: <b><%= @message.body %></b></td>"+
     "<td style='text-align: right;'><%= @message.created_at.strftime("%Y-%m-%d %H:%M") %></td>"+
