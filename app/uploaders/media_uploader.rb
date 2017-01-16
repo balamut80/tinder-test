@@ -3,9 +3,9 @@
 class MediaUploader < CarrierWave::Uploader::Base
 	include CarrierWave::MiniMagick
 
-  storage :file
+	storage :aws
 
-  def store_dir
+	def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
 	end
 
