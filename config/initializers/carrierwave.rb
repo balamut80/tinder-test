@@ -2,9 +2,9 @@ CarrierWave.configure do |config|
 	config.fog_credentials = {
 			# Configuration for Amazon S3
 			:provider              => 'AWS',
-			:aws_access_key_id     => '',
-			:aws_secret_access_key => '',
-			:region                => ''
+			:aws_access_key_id     => 'AKIAISFSIVQY6R452F5Q',
+			:aws_secret_access_key => '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',
+			:region                => 'eu-west-1'
 	}
 
 	# For testing, upload files to local `tmp` folder.
@@ -22,7 +22,6 @@ CarrierWave.configure do |config|
 	end
 
 	config.cache_dir = "#{Rails.root}/tmp/uploads"                  # To let CarrierWave work on heroku
-	config.fog_directory    = ''
-
+	config.fog_directory    = 'tinder-test-task'
 
 end
