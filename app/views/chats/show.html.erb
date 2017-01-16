@@ -4,17 +4,28 @@
       <div class="well" >
         <div class="row">
           <div class="col-lg-12">
-            <h3>Messages</h3>
-            <ul id="chat">
-              <%= render partial: 'message_row', messages: @messages %>
-            </ul>
-
+            <% if @messages.blank? %>
+              Chat is empty
+            <% else %>
+              <table class="table table-condensed chat-table">
+              <% @messages.each do |message| %>
+                <tr>
+                  <td><i><%= message.user.email %></i>: <b><%= message.body %></b></td>
+                  <td style="text-align: right;"><%= message.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+                </tr>
+              <% end %>
+              </table>
+            <% end %>
             <hr>
 
+            <div class="messages-input-div">
             <%= form_for Message.new, remote: true do |f| %>
+
+              <%= f.hidden_field :chat_id, value: @chat_id %>
               <%= f.text_field :body %>
-              <%= f.submit "Send" %>
+              <%= f.submit "Send",:class=>'btn btn-primary' %>
             <% end %>
+            </div>
           </div>
         </div>
       </div>

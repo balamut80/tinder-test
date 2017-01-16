@@ -1,4 +1,9 @@
 <% publish_to "/messages/new" do %>
-$("#chat").append("<%= @message.body %>");
-$("#new_message")[0].reset();
+  var row = '<tr>'+
+    "<td><i><%= @message.user.email %></i>: <b><%= @message.body %></b></td>"+
+    "<td style='text-align: right;'><%= @message.created_at.strftime("%Y-%m-%d %H:%M") %></td>"+
+    '</tr>';
+
+  $('.chat-table tr:last').after(row);
+  $("#new_message")[0].reset();
 <% end %>

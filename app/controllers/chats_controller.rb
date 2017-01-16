@@ -7,7 +7,8 @@ class ChatsController < ApplicationController
 	end
 
 	def show
-		@messages = Message.where(chat_id: params[:id])
+		@chat_id = params[:id]
+		@messages = Message.where(chat_id: @chat_id)
 	end
 
 	private
