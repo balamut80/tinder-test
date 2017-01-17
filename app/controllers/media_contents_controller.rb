@@ -10,7 +10,6 @@ class MediaContentsController < ApplicationController
 		if @media.save!
 			render json: @media
 		else
-			puts 'Hello'
 			render json: { error: 'Failed to process' }, status: 422
 		end
 	end

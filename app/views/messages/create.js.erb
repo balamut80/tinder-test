@@ -4,6 +4,17 @@
     "<td style='text-align: right;'><%= @message.created_at.strftime("%Y-%m-%d %H:%M") %></td>"+
     '</tr>';
 
-  $('.chat-table tr:last').after(row);
+  if ($('.no-records').length!=0) {
+    $('.no-records').remove();
+  }
+
+  $('.chat-table').append(row);
   $("#new_message")[0].reset();
+
+
+    $.ajax({
+      url: '/messages/mark_readed',
+      type: 'POST',
+      data: { id: <%= @message.id %>}
+    });
 <% end %>

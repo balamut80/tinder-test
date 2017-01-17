@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
 	resources :votes, only: [:index]
 	resources :chats, only: [:index, :show]
-	resources :messages, only: [:create]
+	resources :messages, only: [:create] do
+		collection do
+			post 'mark_readed'
+		end
+	end
 
 end
