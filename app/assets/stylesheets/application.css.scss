@@ -48,6 +48,7 @@ body {
 }
 .border-form-div input[type="text"],
 .border-form-div input[type="email"],
+.border-form-div input[type="checkbox"],
 .border-form-div input[type="password"] {
   font-size: 16px;
   height: auto;
@@ -55,6 +56,9 @@ body {
   padding: 7px 9px;
 }
 
+.checkbox {
+  margin-left: 19px;
+}
 .messages-input-div input[type="text"] {
   font-size: 14px;
   height: auto;
