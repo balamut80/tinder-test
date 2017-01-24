@@ -20,7 +20,7 @@ class ProfilesController < ApplicationController
 
 			@chat_id = 0
 			chat = Chat.between(current_user.id, media.user.id).first
-			if chat
+			if chat && params[:commit] == 'like'
 				@chat_id = chat.id
 				render status: 302
 			else
